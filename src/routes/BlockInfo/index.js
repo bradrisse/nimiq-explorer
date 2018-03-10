@@ -59,7 +59,7 @@ class BlockInfo extends React.Component {
                     {window.Nimiq.Policy && blocks.single && <Card className={classes.card}>
                         <div className={classes.header}>
                             <Grid container>
-                                <Grid item xs={12} sm={2}>
+                                <Grid item xs={12} sm={4}>
                                     <Typography variant="title">Height</Typography>
                                     <Typography variant="display2">#{blocks.single.height}</Typography>
                                     <Link to={`/block/${blocks.single.height + 1}`}>
@@ -73,7 +73,7 @@ class BlockInfo extends React.Component {
                                         </IconButton>
                                     </Link>
                                 </Grid>
-                                <Grid item xs={12} sm={10}>
+                                <Grid item xs={12} sm={8}>
                                     <Typography variant="title">Hash</Typography>
                                     <Typography variant="caption">{blocks.single.hash}</Typography>
 
