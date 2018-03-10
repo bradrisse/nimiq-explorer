@@ -1,10 +1,10 @@
 # Nimiq Explorer
 
 ## What is This?
-This is the frontend source code for [NimiqExplorer.com](https://nimiqexplorer.com). The explorer allows you to view all the details of the blockchain is a simple and visual way. This can be used to verify block rewards, transactions, or just to see blockchain statistics. The backend sourcecode is located at [https://github.com/bradrisse/nimiq-explorer-server](https://github.com/bradrisse/nimiq-explorer-server) and the Nimiq core is located at [https://github.com/nimiq-network/core](https://github.com/nimiq-network/core).
+This is the frontend source code for [NimiqExplorer.com](https://nimiqexplorer.com). The explorer allows you to view all the details of the blockchain is a simple and visual way. This can be used to verify block rewards, transactions, or see blockchain statistics. The backend sourcecode is located at [https://github.com/bradrisse/nimiq-explorer-server](https://github.com/bradrisse/nimiq-explorer-server) and the Nimiq core is located at [https://github.com/nimiq-network/core](https://github.com/nimiq-network/core).
 
 ## How does it work?
-A Nimiq nano client is started when visting the site to get up to head block heights. Various calls to the backend server give access to the full blockchain.
+A Nimiq nano client is started when visting the site to get live block height updates. Various calls to the backend server give access to the full blockchain.
 
 ## How was it built?
 The front end was built using [ReactJs](https://reactjs.org/) and [Material UI](https://material-ui-next.com/) along with various other packages that can be seen in `package.json`
@@ -14,7 +14,7 @@ Use the quickstart guide to run the app locally, add you changes to the frontend
 
 ## QuickStart Guide
 
-1. Download Clone `git clone https://github.com/bradrisse/nimiq-explorer`
+1. Clone Repository `git clone https://github.com/bradrisse/nimiq-explorer`
     
 2. Install Packages `yarn` or `npm install`
     
