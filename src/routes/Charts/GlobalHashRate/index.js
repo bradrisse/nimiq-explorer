@@ -10,7 +10,8 @@ import Paper from 'material-ui/Paper';
 import Tabs, { Tab } from 'material-ui/Tabs';
 
 
-const ranges = ['day', 'week', 'month', 'year']
+const ranges = ['day', 'week', 'month', 'year'];
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 class GlobalHashRate extends React.Component {
 
@@ -30,6 +31,43 @@ class GlobalHashRate extends React.Component {
 
     fetchStatistics = () => {
         this.props.blockActions.fetchStatistics('difficulty', ranges[this.state.range])
+    }
+
+    xAxisTickFormatter = (time) => {
+        var date = new Date(time * 1000);
+        return date.getDate() + ". " + months[date.getMonth()] + " " + date.toTimeString().slice(0, 5);
+    }
+
+    yAxisTickFormatter = (diff) => {
+        return this._humanReadableHashesPerSecond(Math.round(diff * Math.pow(2, 16) / window.Nimiq.Policy.BLOCK_TIME));
+    }
+
+    _humanReadableHashesPerSecond(value) {
+        var resultValue = 0;
+        var resultUnit = "H/s";
+        if(value < 1000) {
+            resultValue = value;
+        }
+        else {
+            var kilo = value / 1000;
+            if(kilo < 1000) {
+                resultValue = kilo;
+                resultUnit = "kH/s";
+            }
+            else {
+                var mega = kilo / 1000;
+                if(mega < 1000) {
+                    resultValue = mega;
+                    resultUnit = "MH/s";
+                }
+                else {
+                    resultValue = mega / 1000;
+                    resultUnit = "GH/s";
+                }
+            }
+        }
+    
+        return (resultValue).toFixed(0) + " " + resultUnit;
     }
 
     render() {
@@ -63,10 +101,10 @@ class GlobalHashRate extends React.Component {
                                 <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
                             </linearGradient>
                         </defs>
-                        <XAxis dataKey="timestamp" />
-                        <YAxis />
+                        <XAxis dataKey="timestamp" tickFormatter={this.xAxisTickFormatter} />
+                        <YAxis dataKey="difficulty" tickFormatter={this.yAxisTickFormatter} />
                         <CartesianGrid strokeDasharray="3 3" />
-                        <Tooltip />
+                        <Tooltip labelFormatter={this.xAxisTickFormatter} formatter={this.yAxisTickFormatter}/>
                         <Area type="monotone" dataKey="difficulty" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
                     </AreaChart>
                 </Paper>
