@@ -1,5 +1,3 @@
-import {modifyStatisticsData} from 'utils';
-
 export const types = {
     FETCH_LATEST_BLOCKS: "FETCH_LATEST_BLOCKS",
     FETCH_BLOCK: "FETCH_BLOCK",
@@ -30,7 +28,7 @@ export default function(state = initial, action) {
             return { ...state, single: null };
 
         case `${types.FETCH_STATISTICS}_SUCCESS`:
-            console.log('FETCH_STATISTICS ', modifyStatisticsData(action.payload.data))
+            console.log('FETCH_STATISTICS ')
             return { ...state, statistics: action.payload.data };
         case `${types.FETCH_STATISTICS}_FAILURE`:
             console.error('FETCH_BLOCK FAIL');
