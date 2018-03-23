@@ -41,8 +41,8 @@ class App extends Component {
         window.Nimiq.init(async function() {
             const $ = {};
             window.$ = $;
-            const config = Nimiq.GenesisConfig.CONFIGS['dev'];
-            Nimiq.GenesisConfig.init(config);
+            const config = window.Nimiq.GenesisConfig.CONFIGS['dev'];
+            window.Nimiq.GenesisConfig.init(config);
             $.consensus = await window.Nimiq.Consensus.nano();
 
             $.blockchain = $.consensus.blockchain;
