@@ -148,6 +148,14 @@ class BlockInfo extends React.Component {
                                                 <Link to={`/account/${blocks.single.miner_address}`}>{blocks.single.miner_address}</Link>
                                             </ListItemSecondaryAction>
                                         </ListItem>
+                                        <ListItem>
+                                            <ListItemText
+                                                primary="Extra Data"
+                                            />
+                                            <ListItemSecondaryAction>
+                                                {blocks.single.extra_data}
+                                            </ListItemSecondaryAction>
+                                        </ListItem>
                                     </List>
                                 </Grid>
                             </Grid>
