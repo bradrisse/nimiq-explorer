@@ -1,6 +1,6 @@
 import React from "react";
 import {compose} from 'recompose';
-import { Field, reduxForm, reset } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import Typography from 'material-ui/Typography';
 import { TextField } from 'redux-form-material-ui';
 import Grid from 'material-ui/Grid';
@@ -42,6 +42,10 @@ class Search extends React.Component {
                 case 'block_number':
                     this.props.history.push(`/block/${(values.search)}`)
                     break;
+
+                default:
+                    console.log('unkown format')
+                    break;    
             }
         }
     }
@@ -62,7 +66,7 @@ class Search extends React.Component {
             _detectedFormat = "block_tx_hash";
             _helperText = "Block or Tx Hash";
         }
-        else if(value.match(/^[0-9]*$/) && parseInt(value)) {
+        else if(value.match(/^[0-9]*$/) && parseInt(value, 10)) {
             _detectedFormat = "block_number";
             _helperText = "Block Number";
         }

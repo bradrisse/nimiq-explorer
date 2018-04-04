@@ -117,7 +117,7 @@ class BlockInfo extends React.Component {
                                                 primary="Timestamp"
                                             />
                                             <ListItemSecondaryAction>
-                                                {moment(blocks.single.timestamp).format('MMMM Do YYYY, h:mm:ss a')}
+                                                {moment(blocks.single.timestamp * 1000).format('MMMM Do YYYY, h:mm:ss a')}
                                             </ListItemSecondaryAction>
                                         </ListItem>
                                         <ListItem>

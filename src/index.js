@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM, { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import App from 'routes/App';
 import reducers from "ducks/combine";
 import { Provider } from "react-redux";
@@ -15,7 +15,7 @@ import './index.css';
 import './i18n';
 
 const client = axios.create({
-    baseURL:'https://nimiqexplorer.com/api',
+    baseURL:'http://localhost:3000/api',
     responseType: 'json'
 });
 

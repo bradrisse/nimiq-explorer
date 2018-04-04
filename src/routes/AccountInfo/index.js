@@ -110,7 +110,7 @@ class AccountInfo extends React.Component {
                                     <ListItem>
                                         <ListItemText
                                             primary="Sent Transaction"
-                                            secondary={moment(transaction.timestamp).format('MMMM Do YYYY, h:mm:ss a')}
+                                            secondary={moment(transaction.timestamp * 1000).format('MMMM Do YYYY, h:mm:ss a')}
                                         />
                                         <ListItemSecondaryAction>
                                             {window.Nimiq.Policy.satoshisToCoins(transaction.value)}
@@ -129,8 +129,8 @@ class AccountInfo extends React.Component {
                                 <div key={index}>
                                     <ListItem>
                                         <ListItemText
-                                            primary={<div>Mined Block <Link to={`/block/${block.height}`}>#{block.height}</Link></div>}
-                                            secondary={moment(block.timestamp).format('MMMM Do YYYY, h:mm:ss a')}
+                                            primary={<div>Mined Block<Link to={`/block/${block.height}`}>#{block.height}</Link></div>}
+                                            secondary={moment(block.timestamp * 1000).format('MMMM Do YYYY, h:mm:ss a')}
                                         />
                                         <ListItemSecondaryAction>
                                             {window.Nimiq.Policy.satoshisToCoins(block.reward)} NIM

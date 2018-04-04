@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {actions as blockActions} from "ducks/blocks";
-import { PieChart, Pie, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { PieChart, Pie } from 'recharts';
 import Typography from 'material-ui/Typography';
 import Paper from 'material-ui/Paper';
 import Tabs, { Tab } from 'material-ui/Tabs';

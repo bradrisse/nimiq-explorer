@@ -1,5 +1,4 @@
 import {
-    blueGrey500,
     blueGrey700,
     cyan500,
     fullBlack,
