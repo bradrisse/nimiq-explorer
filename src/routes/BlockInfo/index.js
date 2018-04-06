@@ -18,7 +18,7 @@ import List, {
     ListItemText,
 } from 'material-ui/List';
 import moment from 'moment';
-
+import {hex2ascii} from 'utils';
 const styles = theme => ({
     card: {
         maxWidth: 900,
@@ -153,7 +153,7 @@ class BlockInfo extends React.Component {
                                                 primary="Extra Data"
                                             />
                                             <ListItemSecondaryAction>
-                                                {blocks.single.extra_data}
+                                                {hex2ascii(blocks.single.extra_data)}
                                             </ListItemSecondaryAction>
                                         </ListItem>
                                     </List>
