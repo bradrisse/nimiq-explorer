@@ -56,7 +56,7 @@ class Header extends React.Component {
                         <Grid container justify="flex-start">
                             <Grid item>
                                 <Link to="/" className={classes.link}>
-                                    <Button color="inherit">Search</Button>
+                                    <Button color="inherit">Home</Button>
                                 </Link>
                                 <Button
                                     color="inherit"

@@ -10,8 +10,6 @@ import Block from "./block";
 
 const styles = theme => ({
     wrap: {
-        padding: 30,
-        width: '70%',
         margin: '0 auto'
     }
 });

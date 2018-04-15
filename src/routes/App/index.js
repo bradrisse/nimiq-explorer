@@ -26,7 +26,8 @@ class App extends Component {
         this.props.nimiqActions.updateConsensus(true);
     }
 
-    _onHeadChanged() {
+    _onHeadChanged(head) {
+        console.log('_onHeadChanged ', head.header.timestamp)
         const height = window.$.blockchain.height;
         console.log(`Now at height ${height}.`);
         this.props.nimiqActions.updateHeight(height);
@@ -38,23 +39,26 @@ class App extends Component {
 
     init() {
         let self = this;
-        window.Nimiq.init(async function() {
-            const $ = {};
-            window.$ = $;
-            const config = window.Nimiq.GenesisConfig.CONFIGS['test'];
-            window.Nimiq.GenesisConfig.init(config);
-            $.consensus = await window.Nimiq.Consensus.nano();
 
-            $.blockchain = $.consensus.blockchain;
-            $.mempool = $.consensus.mempool;
-            $.network = $.consensus.network;
+        window.Nimiq.init(function() {
+            window.Nimiq.GenesisConfig.main();
 
-            $.consensus.on('established', () => self._onConsensusEstablished());
-            $.consensus.on('lost', () => console.error('Consensus lost'));
-            $.blockchain.on('head-changed', () => self._onHeadChanged());
-            $.network.on('peers-changed', () => self._onPeersChanged());
-            $.network.connect();
-            
+            window.Nimiq.Consensus.volatileNano().then(function(nanoConsensus) {
+                var $ = {};
+                window.$ = $;
+
+                $.consensus = nanoConsensus;
+
+                $.blockchain = $.consensus.blockchain;
+                $.mempool = $.consensus.mempool;
+                $.network = $.consensus.network;
+
+                $.consensus.on('established', self._onConsensusEstablished);
+                $.consensus.on('lost', () => console.error('Consensus lost'));
+                $.blockchain.on('head-changed', self._onHeadChanged);
+                $.network.on('peers-changed', self._onPeersChanged);
+                $.network.connect();
+            });
         }, function(code) {
             switch (code) {
                 case window.Nimiq.ERR_WAIT:

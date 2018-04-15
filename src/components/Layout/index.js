@@ -21,7 +21,6 @@ class Layout extends React.Component {
                     <div className={classes.wrap}>
                         <Search/>
                         {this.props.children}
-                        <LatestBlocks/>
                     </div>
                 <Footer/>
             </div>

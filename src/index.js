@@ -15,7 +15,7 @@ import './index.css';
 import './i18n';
 
 const client = axios.create({
-    baseURL:'http://localhost:3000/api',
+    baseURL: process.env.production ? 'https://nimiqminer.com/api' : 'http://localhost:3000/api',
     responseType: 'json'
 });
 

@@ -21,13 +21,15 @@ import moment from 'moment';
 
 const styles = theme => ({
     card: {
-        maxWidth: 900,
+        maxWidth: 600,
         width: '100%',
-        background: 'white'
+        background: 'white',
+        overflowWrap: 'break-word'
     },
     header: {
         background: '#F0F0F0',
-        padding: 15
+        padding: 15,
+        overflowWrap: 'break-word'
     }
 });
 
@@ -76,7 +78,6 @@ class BlockInfo extends React.Component {
                                 <Grid item xs={12} sm={8}>
                                     <Typography variant="title">Hash</Typography>
                                     <Typography variant="caption">{blocks.single.hash}</Typography>
-
                                 </Grid>
                             </Grid>
                         </div>
@@ -149,12 +150,16 @@ class BlockInfo extends React.Component {
                                             </ListItemSecondaryAction>
                                         </ListItem>
                                         <ListItem>
-                                            <ListItemText
-                                                primary="Extra Data"
-                                            />
-                                            <ListItemSecondaryAction>
-                                                {blocks.single.extra_data}
-                                            </ListItemSecondaryAction>
+                                            <Grid container>
+                                                <Grid item xs={4}>
+                                                    <ListItemText
+                                                        primary="Extra Data"
+                                                    />
+                                                </Grid>
+                                                <Grid item xs={8}>
+                                                    {blocks.single.extra_data}
+                                                </Grid>
+                                            </Grid>
                                         </ListItem>
                                     </List>
                                 </Grid>
